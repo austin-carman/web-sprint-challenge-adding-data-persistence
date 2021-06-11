@@ -1,5 +1,5 @@
 const projects = [
-    {project_name: 'spray paint cornhole boards', project_description: 'optional', project_completed: '1'},
+    {project_name: 'spray paint cornhole boards', project_description: 'optional', project_completed: true},
     {project_name: 'go swimming'}
 ]
 
@@ -9,8 +9,8 @@ const resources = [
 ]
 
 const tasks = [
-    {task_description: 'boards need to be painted for wedding next Saturday', task_notes: 'need to start', task_completed: 'true', project_id: 1},
-    {task_description: 'swim', task_notes: 'optional', task_completed: true, project_id: 2}
+    {task_description: 'boards need to be painted for wedding next Saturday', task_notes: 'need to start', task_completed: true, project_id: 1},
+    {task_description: 'swim', task_notes: 'optional', project_id: 2}
 ]
 
 const project_resources = [
