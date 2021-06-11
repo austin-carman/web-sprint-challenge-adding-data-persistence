@@ -1,1 +1,5 @@
-// build your `Task` model here
+function getTasks() {
+    return Promise.resolve('tasks model');
+}
+
+module.exports = { getTasks };
