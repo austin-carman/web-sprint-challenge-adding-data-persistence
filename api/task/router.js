@@ -11,6 +11,12 @@ taskRouter.get('/', (req, res, next) => {
         .catch(next);
 });
 
+taskRouter.post('/', (req, res, next) => {
+    res.json({
+        message: 'post tasks'
+    });
+});
+
 taskRouter.use((err, req, res, next) => {
     res.json({
         status: 500, 
