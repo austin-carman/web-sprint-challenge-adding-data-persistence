@@ -1,15 +1,14 @@
-// build your `/api/projects` router here
 const express = require('express');
-const router = express.Router();
+const projectRouter = express.Router();
 
 
-router.get('/', (req, res, next) => {
+projectRouter.get('/', (req, res, next) => {
     res.status(200).json({
         message: 'projects api working'
     });
 })
 
-router.use((err, req, res, next) => {
+projectRouter.use((err, req, res, next) => {
     res.status(500).json({
         customMessage: 'something in the app is not working',
         message: err.message,
@@ -18,4 +17,4 @@ router.use((err, req, res, next) => {
 });
 
 
-module.exports = router;
+module.exports = projectRouter;
