@@ -12,9 +12,11 @@ projectRouter.get('/', (req, res, next) => {
 });
 
 projectRouter.post('/', (req, res, next) => {
-    res.json({
-        message: 'post projects'
-    });
+    Projects.createProject(req.body)
+        .then(newProject => {
+            res.status(201).json(newProject)
+        })
+        .catch(next);
 });
 
 projectRouter.use((err, req, res, next) => {

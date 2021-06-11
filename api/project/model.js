@@ -13,5 +13,23 @@ async function getProjects() {
     return projects;
 }
 
+async function getProjectById(project_id) {
+    const project = await db('projects')
+        .where('project_id', project_id);
 
-module.exports = { getProjects }
+    if (project[0].project_completed === 1) {
+        return {...project[0], project_completed: true}
+    } else {
+        return {...project[0], project_completed: false}
+    }
+
+}
+
+async function createProject(project) {
+    const [id] = await db('projects').insert(project);
+
+    return getProjectById(id);
+}
+
+
+module.exports = { getProjects, createProject }
