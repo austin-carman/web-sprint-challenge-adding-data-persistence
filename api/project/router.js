@@ -11,6 +11,12 @@ projectRouter.get('/', (req, res, next) => {
         .catch(next);
 });
 
+projectRouter.post('/', (req, res, next) => {
+    res.json({
+        message: 'post projects'
+    })
+})
+
 projectRouter.use((err, req, res, next) => {
     res.status(500).json({
         customMessage: 'something in the app is not working',
