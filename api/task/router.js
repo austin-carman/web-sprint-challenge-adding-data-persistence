@@ -1,6 +1,7 @@
 const express = require('express');
 const taskRouter = express.Router();
 const Tasks = require('./model');
+const { validateTask } = require('./task-middleware');
 
 
 taskRouter.get('/', (req, res, next) => {
@@ -11,10 +12,12 @@ taskRouter.get('/', (req, res, next) => {
         .catch(next);
 });
 
-taskRouter.post('/', (req, res, next) => {
-    res.json({
-        message: 'post tasks'
-    });
+taskRouter.post('/', validateTask, (req, res, next) => {
+    Tasks.createTask(req.body)
+        .then(task => {
+            res.status(202).json(task);
+        })
+        .catch(next);
 });
 
 taskRouter.use((err, req, res, next) => {

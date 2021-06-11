@@ -16,4 +16,22 @@ async function getTasks() {
     return tasks;
 }
 
-module.exports = { getTasks };
+async function getTaskById(task_id) {
+    const task = await db('tasks')
+        .where('task_id', task_id);
+
+    if (task[0].task_completed === 1) {
+        return {...task[0], task_completed: true}
+    } else {
+        return {...task[0], task_completed: false}
+    }
+
+}
+
+async function createTask(task) {
+    const [id] = await db('tasks').insert(task);
+
+    return getTaskById(id);
+}
+
+module.exports = { getTasks, createTask };
