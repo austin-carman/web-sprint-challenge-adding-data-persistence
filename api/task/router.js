@@ -1,7 +1,7 @@
 const express = require('express');
 const taskRouter = express.Router();
 const Tasks = require('./model');
-const { validateTask } = require('./task-middleware');
+const { validateTask, validateProjectId } = require('./task-middleware');
 
 
 taskRouter.get('/', (req, res, next) => {
@@ -12,10 +12,10 @@ taskRouter.get('/', (req, res, next) => {
         .catch(next);
 });
 
-taskRouter.post('/', validateTask, (req, res, next) => {
+taskRouter.post('/', validateTask, validateProjectId, (req, res, next) => {
     Tasks.createTask(req.body)
         .then(task => {
-            res.status(202).json(task);
+            res.status(201).json(task);
         })
         .catch(next);
 });

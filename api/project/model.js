@@ -25,6 +25,14 @@ async function getProjectById(project_id) {
 
 }
 
+async function findProjectById(project_id) {
+    const project = await db('projects')
+        .where('project_id', project_id);
+    console.log('project from model', project);
+
+    return project[0];
+}
+
 async function createProject(project) {
     const [id] = await db('projects').insert(project);
 
@@ -32,4 +40,4 @@ async function createProject(project) {
 }
 
 
-module.exports = { getProjects, createProject }
+module.exports = { getProjects, createProject, findProjectById }

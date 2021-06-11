@@ -21,9 +21,11 @@ async function getTaskById(task_id) {
         .where('task_id', task_id);
 
     if (task[0].task_completed === 1) {
-        return {...task[0], task_completed: true}
+        const completedTask = {...task[0], task_completed: true};
+        return completedTask;
     } else {
-        return {...task[0], task_completed: false}
+        const falseTask = {...task[0], task_completed: false};
+        return falseTask;
     }
 
 }
@@ -34,4 +36,4 @@ async function createTask(task) {
     return getTaskById(id);
 }
 
-module.exports = { getTasks, createTask };
+module.exports = { getTasks, createTask, getTaskById };
