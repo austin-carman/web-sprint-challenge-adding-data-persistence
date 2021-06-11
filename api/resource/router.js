@@ -10,6 +10,12 @@ resourceRouter.get('/', (req, res, next) => {
         .catch(next);
 });
 
+resourceRouter.post('/', (req, res, next) => {
+    res.json({
+        message: 'post resource'
+    });
+});
+
 resourceRouter.use((err, req, res, next) => {
     res.json({
         status: 500,

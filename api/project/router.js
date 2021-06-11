@@ -14,8 +14,8 @@ projectRouter.get('/', (req, res, next) => {
 projectRouter.post('/', (req, res, next) => {
     res.json({
         message: 'post projects'
-    })
-})
+    });
+});
 
 projectRouter.use((err, req, res, next) => {
     res.status(500).json({
