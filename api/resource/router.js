@@ -11,14 +11,15 @@ resourceRouter.get('/', (req, res, next) => {
 });
 
 resourceRouter.post('/', (req, res, next) => {
-    res.json({
-        message: 'post resource'
-    });
+    Resources.createResource(req.body)
+        .then(resource => {
+            res.status(201).json(resource);
+        })
+        .catch(next);
 });
 
 resourceRouter.use((err, req, res, next) => {
-    res.json({
-        status: 500,
+    res.status(500).json({
         message: err.message,
         stack: err.stack
     });
